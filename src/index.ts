@@ -3,7 +3,8 @@ import { context, getOctokit } from "@actions/github";
 
 export async function run() {
   const token = getInput("gh-token");
-  const label = getInput("label");
+  const labelsInput = getInput("label");
+  const labels = labelsInput.split(",").map((label) => label.trim()); // Handle multiple labels
 
   const octokit = getOctokit(token);
   const pullRequest = context.payload.pull_request;
@@ -17,7 +18,7 @@ export async function run() {
       owner: context.repo.owner,
       repo: context.repo.repo,
       issue_number: pullRequest.number,
-      labels: [label],
+      labels: labels,
     });
   } catch (error) {
     setFailed((error as Error)?.message ?? "Unknown error");
