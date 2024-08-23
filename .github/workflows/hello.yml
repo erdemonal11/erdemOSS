@@ -1,7 +1,7 @@
 name: "Hello"
 
 on:
-  pull-request:
+  pull_request:
     types: [opened, reopened]
 
 jobs:
