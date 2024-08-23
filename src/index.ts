@@ -3,8 +3,8 @@ import { context, getOctokit } from "@actions/github";
 
 export async function run() {
   const token = getInput("gh-token");
-  const labelsInput = getInput("label");
-  const labels = labelsInput.split(",").map((label) => label.trim()); // Handle multiple labels
+  const labelsInput = getInput("labels");
+  const labels = labelsInput.split(",").map((label) => label.trim());
 
   const octokit = getOctokit(token);
   const pullRequest = context.payload.pull_request;

@@ -9,20 +9,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest] # Added macOS
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Apply label to PR
-        uses: ./
+      - name: Apply labels to PR
+        uses: erdemonal11/erdemOSS@v1
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
-          label: ${{ inputs.label }} 
-
-inputs:
-  label:
-    description: 'Label to apply to the pull request'
-    required: true
-    default: 'default-label' 
+          labels: ${{ secrets.PR_LABELS }} 

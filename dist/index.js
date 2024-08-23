@@ -31101,7 +31101,8 @@ const github_1 = __nccwpck_require__(5438);
 async function run() {
     var _a;
     const token = (0, core_1.getInput)("gh-token");
-    const label = (0, core_1.getInput)("label");
+    const labelsInput = (0, core_1.getInput)("label");
+    const labels = labelsInput.split(",").map((label) => label.trim()); // Handle multiple labels
     const octokit = (0, github_1.getOctokit)(token);
     const pullRequest = github_1.context.payload.pull_request;
     try {
@@ -31112,7 +31113,7 @@ async function run() {
             owner: github_1.context.repo.owner,
             repo: github_1.context.repo.repo,
             issue_number: pullRequest.number,
-            labels: [label],
+            labels: labels,
         });
     }
     catch (error) {
