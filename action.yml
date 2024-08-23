@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: "erdemOSS PR Label "
+=======
+name: "erdemOSS PR Label"
+>>>>>>> 8989744f54c4782891ffcd34cbeed999a0b201f0
 description: "Automatically apply a label to new pull requests to streamline your workflow 🚀"
 author: "Erdem Önal"
 
