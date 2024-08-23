@@ -1,22 +1,15 @@
-name: "Label New Pull Requests"
+name: "Working!"
 
 on:
   pull_request:
     types: [opened, reopened]
 
 jobs:
-  label:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-
+  hello:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Apply label to PR
-        uses: ./
+      - uses: actions/checkout@v2
+      - uses: ./
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
-          label: ${{ github.event.inputs.label }}
+          label: 'needs-review'
