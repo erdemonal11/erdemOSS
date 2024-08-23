@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest] 
+        os: [ubuntu-latest, windows-latest]
 
     steps:
       - name: Checkout code
@@ -19,10 +19,4 @@ jobs:
         uses: ./
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
-          label: ${{ inputs.label }} 
-
-inputs:
-  label:
-    description: 'Label to apply to the pull request'
-    required: true
-    default: 'default-label' 
+          label: ${{ github.event.inputs.label }}
