@@ -1,15 +1,22 @@
-name: "Label new pull requests"
-description: "Add a new label when a new PR is opened"
+name: "🎨 Label New Pull Requests"
+description: "Automatically apply a label to new pull requests to streamline your workflow 🚀"
 author: "Erdem Önal"
 
 inputs:
   gh-token:
-    description: 'The Github token for auth.'
+    description: 'The GitHub token for authentication. Ensure it has the required permissions.'
     required: true
   label:
-    description: 'The label to be applied to the pull request'
+    description: 'The label to be applied to the pull request. This helps categorize or prioritize PRs.'
     required: true
 
 runs:
   using: "node16"
   main: "dist/index.js"
+
+branding:
+  icon: "sliders"  
+  color: "blue"  
+
+
+repository: "https://github.com/erdemonal11/erdemOSS"
